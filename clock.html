@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+            Digital clock
+        </title>
+        <link rel="icon" href="clock.png">
+        <style>
+            body{
+                background-color: black;
+
+            }
+            #clock-display{
+                position: absolute;
+                left:50%;
+                top:50%;
+                font-size: 60px;
+                transform: translateX(-50%) translateY(-50%);
+                color:#17D4FE;
+                
+                
+            }
+        </style>
+    </head>
+    <body>
+        <div id="clock-display" onload="showtime()"> 
+
+        </div>
+    </body>
+    <script>
+        function showtime()
+        {
+            var date=new Date();
+            var h=date.getHours();
+            var m=date.getMinutes();
+            var s=date.getSeconds();
+            var session='AM';
+            if(h==0){
+                h=12;
+            }
+            if(h>12){
+                h=h-12;
+                session='PM';
+            }
+            if(h<10){
+                h='0'+h;
+            }
+            if(m<10)
+            {
+                m='0'+m;
+            }
+            if(s<10)
+            {
+                s='0'+s;
+            }
+            var time= h+":"+ m+":"+ s+ session;
+            document.getElementById("clock-display").innerHTML=time;
+            setTimeout(showtime,1000);
+        }
+        showtime();
+    </script>
+</html>
